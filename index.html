@@ -9,27 +9,24 @@
 <body>
   <a-scene>
     <a-assets>
-      <!-- Nomes exatos conforme os arquivos no GitHub -->
       <img id="img1" src="cenario1.jpg">
       <img id="img2" src="cenario2.jpg">
       <img id="img3" src="cenario3.jpg">
       <img id="img4" src="cenario4.jpg">
     </a-assets>
 
-    <!-- Fundo 360° -->
     <a-sky id="ambiente" src="#img1" rotation="0 -90 0"></a-sky>
 
-    <!-- Esfera/Portal Clicável -->
+    <!-- Portal deslocado para a direita (x=1.5) para não iniciar focado -->
     <a-sphere
       id="portal"
       class="clicavel"
-      position="0 1.6 -3"
+      position="1.5 1.5 -3"
       radius="0.25"
       color="#00FFFF"
       animation__pulse="property: scale; to: 1.2 1.2 1.2; dir: alternate; dur: 900; loop: true">
     </a-sphere>
 
-    <!-- Câmera com Cursor Branco -->
     <a-camera position="0 1.6 0">
       <a-cursor
         id="cursor"
@@ -49,7 +46,6 @@
     const portal = document.querySelector("#portal");
     const ambiente = document.querySelector("#ambiente");
 
-    // Troca de cenário
     portal.addEventListener("click", () => {
       atual = (atual % 4) + 1;
       ambiente.setAttribute("src", "#img" + atual);
